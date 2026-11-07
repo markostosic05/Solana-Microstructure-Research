@@ -1,0 +1,42 @@
+{
+  "version": "xs-young-v1-2026-11-04",
+  "tag": "XS-young",
+  "note": "Same ranking as XS v1, but ONLY pools 5-30 minutes old with $20k+ liquidity (v1 needs 30+ min, $50k+).",
+  "frozen_note": "Do not edit during the test - make rules_xs_young_v2.json for changes.",
+  "network": "solana",
+  "trending_duration": "5m",
+  "pages": 3,
+  "horizons": {
+    "5m": 5,
+    "15m": 15
+  },
+  "filters": {
+    "liquidity_usd_min": 20000,
+    "pool_age_min": 5,
+    "pool_age_max_min": 30,
+    "buy_sell_ratio_5m_min": 1.0,
+    "fdv_usd_max": 200000000
+  },
+  "books": {
+    "top1": {"variants": ["hold_h", "guard_h", "tp50_rr1", "tp100_rr2"]},
+    "top10pct": {"variants": ["hold_h", "guard_h", "tp50_rr1", "tp100_rr2"]},
+    "bottom10pct": {"variants": ["hold_h"]},
+    "control": {"variants": ["hold_h"]}
+  },
+  "variants": {
+    "hold_h": {"hold": "h"},
+    "guard_h": {"hold": "h", "guard": true},
+    "tp50_rr1": {"hold": 30, "tp": 0.5, "stop": 0.5},
+    "tp100_rr2": {"hold": 30, "tp": 1.0, "stop": 0.5}
+  },
+  "guard": {
+    "liquidity_drop_frac": 0.2,
+    "drained_usd": 1000,
+    "min_hold_min": 1
+  },
+  "costs": {
+    "sizes_usd": [100, 500, 1000],
+    "fee_per_side": 0.003,
+    "tx_usd": 0.1
+  }
+}

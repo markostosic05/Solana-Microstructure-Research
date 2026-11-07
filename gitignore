@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.vs/
+*.pyproj
+*.sln
+calibration_*.png

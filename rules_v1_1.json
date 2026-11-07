@@ -1,0 +1,41 @@
+{
+  "version": "v1.1-2026-11-02",
+  "frozen_note": "SAME entry thresholds as v1. v1.1 only fixes HOW they are measured, to match the backtest: liquidity and buys/sells come from an early snapshot (minute 1.5-5, the backtest's was at median 2.25), and the decision waits until minute 12 so the candles for minutes 0-10 are complete. Do not edit; make a new file for real rule changes.",
+  "universe": {
+    "network": "solana",
+    "dex": "pumpswap",
+    "mint_suffix": "pump"
+  },
+  "decision_minute": 10,
+  "max_decision_lag_min": 4,
+  "measurement": {
+    "early_snapshot_min": [1.5, 5.0],
+    "decide_after_minute": 12,
+    "liquidity_from": "early",
+    "buy_sell_from": "early"
+  },
+  "entry": {
+    "vol_first2_usd": [510, 12700],
+    "ret_to_decision": [0.068, 0.337],
+    "liquidity_usd_min": 17300,
+    "busiest_minute_share_max": 0.212,
+    "buy_sell_ratio_5m_min": 2.35
+  },
+  "backtest_fail_rates": {
+    "vol_first2": 0.64, "ret_to_decision": 0.70, "liquidity": 0.38,
+    "busiest_share": 0.51, "buy_sell_ratio": 0.32, "not_trading": 0.30, "all_pass": 0.05
+  },
+  "exits": {
+    "max_hold_min": 30,
+    "trail_frac": 0.30,
+    "activity_floor_frac": 0.25,
+    "activity_min_hold_min": 5,
+    "liquidity_drop_frac": 0.20,
+    "drained_usd": 1000
+  },
+  "costs": {
+    "sizes_usd": [50, 100, 300],
+    "fee_per_side": {"direct": 0.003, "axiom": 0.013},
+    "tx_usd": 0.10
+  }
+}

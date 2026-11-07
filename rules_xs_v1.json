@@ -1,0 +1,86 @@
+{
+  "version": "xs-v1-2026-11-02",
+  "frozen_note": "Cross-sectional momentum on Solana trending pools. Do not edit during the test - make rules_xs_v2.json for changes.",
+  "network": "solana",
+  "trending_duration": "5m",
+  "pages": 3,
+  "horizons": {
+    "5m": 5,
+    "15m": 15
+  },
+  "filters": {
+    "liquidity_usd_min": 50000,
+    "pool_age_min": 30,
+    "buy_sell_ratio_5m_min": 1.0,
+    "fdv_usd_max": 200000000
+  },
+  "books": {
+    "top1": {
+      "variants": [
+        "hold_h",
+        "guard_h",
+        "tp50_rr1",
+        "tp100_rr2",
+        "tp200_rr3"
+      ]
+    },
+    "top10pct": {
+      "variants": [
+        "hold_h",
+        "guard_h",
+        "tp50_rr1",
+        "tp100_rr2",
+        "tp200_rr3"
+      ]
+    },
+    "bottom10pct": {
+      "variants": [
+        "hold_h"
+      ]
+    },
+    "control": {
+      "variants": [
+        "hold_h"
+      ]
+    }
+  },
+  "variants": {
+    "hold_h": {
+      "hold": "h"
+    },
+    "guard_h": {
+      "hold": "h",
+      "guard": true
+    },
+    "tp50_rr1": {
+      "hold": 30,
+      "tp": 0.5,
+      "stop": 0.5
+    },
+    "tp100_rr2": {
+      "hold": 30,
+      "tp": 1.0,
+      "stop": 0.5
+    },
+    "tp200_rr3": {
+      "hold": 30,
+      "tp": 2.0,
+      "stop": 0.5
+    }
+  },
+  "guard": {
+    "liquidity_drop_frac": 0.2,
+    "drained_usd": 1000,
+    "min_hold_min": 1
+  },
+  "costs": {
+    "sizes_usd": [
+      100,
+      500,
+      1000
+    ],
+    "fee_per_side": 0.003,
+    "tx_usd": 0.1
+  },
+  "variants_note": "tpX_rrY: close the WHOLE position at +X% (take profit) or at -50% (stop): 1:1, 2:1, 3:1 reward:risk. Max hold 30 min."
+}
