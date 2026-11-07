@@ -1,6 +1,18 @@
+# local config - not part of the project
+helius_key.txt
+*key*.txt
+*.env
+
+# databases and data (large, and full of collected data)
+*.db
+*.db-wal
+*.db-shm
+*.csv
+*.log
+
+# editor / python clutter
 __pycache__/
 *.pyc
 .vs/
 *.pyproj
 *.sln
-calibration_*.png
